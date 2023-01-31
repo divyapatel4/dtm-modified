@@ -1,6 +1,7 @@
 .SUFFIXES: .c .u
-CC= g++ -std=c++98
+CC= g++
 
+CC= g++
 
 LIB=../lib
 GSLWRAP_LIB=../gslwrap
@@ -90,5 +91,3 @@ all:	gflags main st sd lda-e lda-m aggregate
 
 clean:
 	-rm -f *.o
-
-

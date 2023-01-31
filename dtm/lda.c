@@ -140,7 +140,7 @@ void update_phi(int doc_number, int time,
 		lda_post* p, lda_seq* var,
 		gsl_matrix* g) {
     int i, k, n, K = p->model->ntopics, N = p->doc->nterms;
-    double *dig = (double*) malloc (sizeof(double)*p->model->ntopics);
+    double dig[p->model->ntopics];
 
     for (k = 0; k < K; k++) {
       dig[k] = gsl_sf_psi(vget(p->gamma, k));
@@ -164,8 +164,6 @@ void update_phi(int doc_number, int time,
 	vset(&phi_row, i, exp(vget(&log_phi_row, i)));
       }
     }
-
-  free (dig);
 }
 
 
@@ -181,7 +179,7 @@ void update_phi_fixed(int doc_number, int time,
     }
 
     int i, k, n, K = p->model->ntopics, N = p->doc->nterms;
-    double *dig = (double*) malloc (sizeof(double)*p->model->ntopics);
+    double dig[p->model->ntopics];
 
     double k_sum = 0.0;
     for (k = 0; k < K; k++) {
@@ -282,8 +280,6 @@ void update_phi_fixed(int doc_number, int time,
 	vset(&phi_row, i, exp(vget(&log_phi_row, i)));
       }
     }
-
-  free (dig);
 }
 
 
@@ -299,8 +295,7 @@ double compute_lda_lhood(lda_post* p) {
   double lhood =
     gsl_sf_lngamma(sum(p->model->alpha)) -
     gsl_sf_lngamma(gamma_sum);
-  //fix issue #1
-  //vset(p->lhood, K, lhood);
+  vset(p->lhood, K, lhood);
   
   double influence_term = 0.0;
   double digsum = gsl_sf_psi(gamma_sum);
