@@ -1,7 +1,6 @@
 .SUFFIXES: .c .u
-CC= g++
+CC= g++ -std=c++98
 
-CC= g++
 
 LIB=../lib
 GSLWRAP_LIB=../gslwrap
@@ -92,40 +91,4 @@ all:	gflags main st sd lda-e lda-m aggregate
 clean:
 	-rm -f *.o
 
-#
-#.SUFFIXES: .c .o
-#CC= g++
-#
-#LIB=../lib
-#GSLWRAP_LIB=../gslwrap
-#LOCAL_DIR=../local
-#
-#CFLAGS = -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include -I
-#${GSLWRAP_LIB}/include/gslwrap -I ${LOCAL_DIR}/include -I
-#${LIB}/util/gflags-1.1/src/gflags
-#
-#GDB_CFLAGS = -ggdb -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include
-#-I ${GSLWRAP_LIB}/include/gslwrap -I ${LOCAL_DIR}/include -I
-#${LIB}/util/gflags-1.1/src/gflags
-#
-#BASE_INCLUDES = -I ${LIB}
-#
-#LDFLAGS = -L${LOCAL_DIR}/lib -L${LOCAL_DIR}/lib/stl -lgsl -lm -lgslcblas
-#LOBJECTS = ss-lm.o gsl-wrappers.o data.o param.o util.o lda-seq.o
-#lda.o params.o main.o
-#
-#GFLAGS = gflags.o gflags_reporting.o gflags_completions.o
-#
-#TOPICS_DIR=/home/sgerrish/portal/src1/topics
-#TOPICS_DIR=/u/sgerrish/src1/topics
-#
-#GGDB = -ggdb
-#
-#.c.o:
-#${CC} ${CFLAGS} -c $< -o $@
-#
-#main: $(LOBJECTS)
-#$(CC) $(LOBJECTS) $(LDFLAGS) -o $@
-#
-#clean:
-#rm -f $(LOBJECTS) main
+
