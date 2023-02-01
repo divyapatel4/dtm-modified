@@ -3,7 +3,7 @@
 LIB = ../lib
 GSLWRAP_LIB = ../gslwrap
 OUTPUT_FILE ?= dtm
-OPTFLAGS ?= -O3
+OPTFLAGS ?= -O5
 STRIP ?= strip
 CXXFLAGS += -I ${LIB} -I ${LIB}/math -I ${GSLWRAP_LIB}/include -I ${GSLWRAP_LIB}/include/gslwrap 
 
