@@ -7,7 +7,7 @@
 // See the README for this package for details about modifying or
 // distributing this software.
 
-#include "gflags.h"
+#include <gflags/gflags.h>
 
 #include "lda.h"
 
@@ -581,7 +581,7 @@ void lda_em(lda* model,
     double old_lhood = 0;
     double converged = 0;
     double m_lhood = lda_m_step(model, ss);
-    outlog( "initial likelihood = %10.3f\n", lhood);
+    outlog( "initial likelihood = %17.14f\n", lhood);
     do
     {
         iter++;
@@ -592,9 +592,9 @@ void lda_em(lda* model,
         lhood = e_lhood + m_lhood;
         converged = (old_lhood - lhood) / (old_lhood);
         outlog("iter   = %d", iter);
-        outlog("lhood  = % 10.3f", lhood);
-        outlog("m, e lhood  = % 10.3f, % 10.3f", m_lhood, e_lhood);
-        outlog("conv   = % 5.3e\n", converged);
+        outlog("lhood  = % 17.14f", lhood);
+        outlog("m, e lhood  = % 17.14f, % 17.14f", m_lhood, e_lhood);
+        outlog("conv   = % 17.14e\n", converged);
 	outlog("max_iter: %d\n", max_iter);
     }
     while (((converged > LDA_EM_CONVERGED) || (iter <= 5))
